@@ -54,11 +54,6 @@ export default function Hero() {
     }
   };
 
-  const handleDownloadResume = () => {
-    
-    window.open("/Resume.pdf", "_blank");
-  };
-
   return (
     <section
       id="hero"
@@ -113,6 +108,7 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start w-full max-w-md pt-4">
             <button
               id="hero-cta-work"
+              type="button"
               onClick={() => scrollToSection("projects")}
               className="w-full sm:w-auto px-8 py-3.5 bg-cyan-500 hover:bg-cyan-600 text-gray-950 font-extrabold text-base rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
             >
@@ -120,14 +116,17 @@ export default function Hero() {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
 
-            <button
+            <a
               id="hero-cta-resume"
-              onClick={handleDownloadResume}
+              href="/Resume.pdf"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-3.5 bg-white/5 hover:bg-white/10 text-gray-200 hover:text-white font-semibold text-base rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 flex items-center justify-center gap-2"
             >
               <FileText className="w-4 h-4 text-cyan-400" />
               Resume (PDF)
-            </button>
+            </a>
           </div>
 
           {/* Interactive Compact Terminal Display */}
