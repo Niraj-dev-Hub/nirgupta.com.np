@@ -55,7 +55,7 @@ export default function Hero() {
   };
 
   const handleDownloadResume = () => {
-    window.open("/Resume.pdf", "_blank");
+    window.open("public/Resume.pdf", "_blank");
   };
 
   return (
