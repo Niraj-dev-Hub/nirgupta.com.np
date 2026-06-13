@@ -122,32 +122,32 @@ export const ACHIEVEMENTS: Achievement[] = [
 
 export const GALLERY_IMAGES = [
   {
-    url: "/src/assets/images/10grade.jpeg",
+    url: "/images/10grade.jpeg",
     title: "Grade 10 Grade Sheets",
     description: "Passed SEE on 2080 with 3.53 GPA",
   },
   {
-    url: "/src/assets/images/1st sem.jpeg",
+    url: "/images/1stsem.jpeg",
     title: "Diploma 1st Semester result",
     description: "Diploma in computer science at KIT college result of first semster "
   },
   {
-    url: "/src/assets/images/java.jpeg",
+    url: "/images/java.jpeg",
     title: "JAVA basics",
     description: "Java basics certificate from sololearn.",
   },
   {
-    url: "/src/assets/images/python.jpeg",
+    url: "/images/python.jpeg",
     title: "Python Basics",
     description: "Python basics certificate from sololearn.",
   },
   {
-    url: "/src/assets/images/card.jpeg",
+    url: "/images/card.jpeg",
     title: "Hackathon participate",
     description: "First Exprience of hackathon at pcps college",
   },
   {
-    url: "/src/assets/images/sigma.jpeg",
+    url: "/images/sigma.jpeg",
     title: "FullStack Devlopment",
     description: "FullStack Development certificate from Apna collge.",
   },

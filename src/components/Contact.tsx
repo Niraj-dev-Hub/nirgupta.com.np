@@ -8,31 +8,55 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
+
+  //   try {
+  //     // Post to the direct Formspree email proxy target as requested
+  //     await fetch("https://formspree.io/alexgupta609@gmail.com", {
+  //       method: "POST",
+  //       headers: { 
+  //         "Content-Type": "application/json",
+  //         "Accept": "application/json"
+  //       },
+  //       body: JSON.stringify(formState),
+  //     });
+
+  //     // Show success states
+  //     setIsSubmitted(true);
+  //     setFormState({ name: "", email: "", message: "" });
+  //   } catch (err) {
+  //     console.error(err);
+  //     // Fallback response simulation so user experience is smooth and premium
+  //     setIsSubmitted(true);
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      // Post to the direct Formspree email proxy target as requested
-      await fetch("https://formspree.io/alexgupta609@gmail.com", {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(formState),
-      });
-
-      // Show success states
+    // Native Netlify form submit
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData as any).toString()
+    })
+    .then(() => {
       setIsSubmitted(true);
       setFormState({ name: "", email: "", message: "" });
-    } catch (err) {
-      console.error(err);
-      // Fallback response simulation so user experience is smooth and premium
-      setIsSubmitted(true);
-    } finally {
       setIsSubmitting(false);
-    }
+    })
+    .catch((err) => {
+      console.error(err);
+      setIsSubmitted(true);
+      setIsSubmitting(false);
+    });
   };
 
   return (
@@ -165,8 +189,23 @@ export default function Contact() {
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <h3 className="font-heading text-lg sm:text-xl font-bold text-white mb-2">
+                  <form
+                    onSubmit={handleSubmit}
+                    name="contact"
+                    method="POST"
+                    data-netlify="true"
+                    data-netlify-honeypot="bot-field"
+                    className="space-y-6"
+                  >
+                    {/* Hidden fields for Netlify forms */}
+                    <input type="hidden" name="form-name" value="contact" />
+                    <div className="hidden">
+                      <label>
+                        Don’t fill this out if you’re human: <input name="bot-field" />
+                      </label>
+                    </div>
+
+                    <h3 className="font-heading text-lg sm:text-nxl font-bold text-white mb-2">
                        Establish Connection
                     </h3>
 
@@ -177,6 +216,7 @@ export default function Contact() {
                       </label>
                       <input
                         type="text"
+                        name="name"
                         required
                         placeholder="Nivedita Chaudhary"
                         value={formState.name}
@@ -192,6 +232,7 @@ export default function Contact() {
                       </label>
                       <input
                         type="email"
+                        name="email"
                         required
                         placeholder="nivedita@ioe.edu.np"
                         value={formState.email}
@@ -206,6 +247,7 @@ export default function Contact() {
                         Detailed Message
                       </label>
                       <textarea
+                        name="message"
                         required
                         rows={4}
                         placeholder="Hi Niraj! I saw your EcoTrack project repo and wanted to collaborate..."

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Terminal, ArrowRight, FileText, MapPin, Code, Shield } from "lucide-react";
 import { PERSONAL_DETAILS, TYPING_WORDS } from "../data";
 
-const profileAvatar = "/src/assets/images/pp.jpeg";
+const profileAvatar = "/images/pp.jpeg";
 
 export default function Hero() {
   const [text, setText] = useState("");
@@ -55,7 +55,7 @@ export default function Hero() {
   };
 
   const handleDownloadResume = () => {
-    alert("Resume download triggered! (Niraj_Kumar_Gupta_Resume.pdf is a placeholder file)");
+    window.open("/images/Resume.pdf", "_blank");
   };
 
   return (
