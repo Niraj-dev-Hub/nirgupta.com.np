@@ -55,7 +55,7 @@ export default function Hero() {
   };
 
   const handleDownloadResume = () => {
-    window.open("https://nirguptacomnp.vercel.app/Resume.pdf", "_blank");
+    window.open("/Resume.pdf", "_blank");
   };
 
   return (
@@ -113,7 +113,7 @@ export default function Hero() {
             <button
               id="hero-cta-work"
               onClick={() => scrollToSection("projects")}
-              className="w-full sm:w-auto px-8 py-3.5 bg-cyan-500 hover:bg-cyan-600 text-gray-950 font-extrabold text-base rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg shadow-cyan-500/25 border border-cyan-400/20 active:scale-95 cursor-pointer"
+              className="w-full sm:w-auto px-8 py-3.5 bg-cyan-500 hover:bg-cyan-600 text-gray-950 font-extrabold text-base rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
             >
               Explore Work
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -122,7 +122,7 @@ export default function Hero() {
             <button
               id="hero-cta-resume"
               onClick={handleDownloadResume}
-              className="w-full sm:w-auto px-8 py-3.5 bg-white/5 hover:bg-white/10 text-gray-200 hover:text-white font-semibold text-base rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
+              className="w-full sm:w-auto px-8 py-3.5 bg-white/5 hover:bg-white/10 text-gray-200 hover:text-white font-semibold text-base rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 flex items-center justify-center gap-2"
             >
               <FileText className="w-4 h-4 text-cyan-400" />
               Resume (PDF)
