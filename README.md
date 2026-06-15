@@ -1,20 +1,41 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# My Portfolio | Nir Gupta
 
-# Run and deploy your AI Studio app
+My personal portfolio website showcasing my skills, projects, and professional experience.
 
-This contains everything you need to run your app locally.
+## 🚀 Live Demo
 
-View your app in AI Studio: https://ai.studio/apps/70d9697e-cd7a-489e-831a-279d585890f6
+[https://nirgupta.com.np](https://nirguptacomnp.vercel.app)
 
-## Run Locally
+## 🛠️ Tech Stack
 
-**Prerequisites:**  Node.js
+- HTML5
+- CSS3 
+- JavaScript
+- TypeScript
+- Deployed on Vercel
 
+## 📁 Sections Included
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- Home / Introduction
+- About Me
+- Skills & Expertise
+- Projects Showcase  
+- Resume Download
+- Contact Information
+
+## 📱 Features
+
+- Fully responsive design
+- Smooth scrolling navigation
+- Downloadable resume (PDF)
+- Clean & modern UI
+
+## 🧑‍💻 Author
+
+**Nir Gupt**
+- GitHub: [@yourusername](https://github.com/Niraj-dev-Hub)
+- Email: alexgupta609@gmail.com
+
+## 📄 License
+
+Feel free to use this as inspiration for your own portfolio.
