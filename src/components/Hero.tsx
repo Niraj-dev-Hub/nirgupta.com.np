@@ -141,14 +141,14 @@ export default function Hero() {
               <div className="font-mono text-xs sm:text-sm text-gray-300 space-y-1.5 leading-relaxed">
                 <p className="text-gray-500"># System Hardware Profile</p>
                 <p>
-                  <span className="text-cyan-400">$</span> fetch-profile --user nirgupta
+                  <span className="text-cyan-400">$</span> fetch-profile --user nirajgupta
                 </p>
                 <p className="text-emerald-400">
                   ▸ Node: <span className="text-white">Active</span> | Active Domain:{" "}
                   <span className="text-white">{PERSONAL_DETAILS.domain}</span>
                 </p>
                 <p className="text-emerald-400">
-                  ▸ Engineering Focus: <span className="text-white">Full Stack Sprints / Systems Sec</span>
+                  ▸ Engineering Focus: <span className="text-white">Full Stack Sprints / DSA with JAVA </span>
                 </p>
                 <p className="text-emerald-400">
                   ▸ Live Build: <span className="text-white">{PERSONAL_DETAILS.currentlyBuildingName}</span>
