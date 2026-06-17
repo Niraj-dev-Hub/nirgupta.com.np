@@ -4,7 +4,9 @@ My personal portfolio website showcasing my skills, projects, and professional e
 
 ## 🚀 Live Demo
 
-[https://nirgupta.com.np](https://nirguptacomnp.vercel.app)
+[https://nirgupta.com.np](https://nirajkgupta.com.np)
+
+<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/b72058e2-78de-48bc-b691-0a33e34bbc43" />
 
 ## 🛠️ Tech Stack
 
