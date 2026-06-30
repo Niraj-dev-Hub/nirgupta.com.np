@@ -54,6 +54,13 @@ export default function Hero() {
     }
   };
 
+<<<<<<< HEAD
+=======
+  const handleDownloadResume = () => {
+    window.open("/Resume.pdf", "_blank");
+  };
+
+>>>>>>> d257e50 (some pictures are added)
   return (
     <section
       id="hero"

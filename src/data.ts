@@ -80,10 +80,10 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/Niraj-dev-Hub/Nir-game-Hub",
   },
   {
-    title: "Quora-Post",
-    description: "A community and discussion-driven layout mirroring classic query platforms, allowing users to raise and answer engineering questions.",
-    tags: ["JavaScript", "HTML", "CSS", "UI Mirror"],
-    githubUrl: "https://github.com/Niraj-dev-Hub/Quora-Post",
+    title: "Ausadhi",
+    description: "A hyper-local platform that enables citizens to discover medicine availability in nearby pharmacies while helping pharmacy owners manage their inventory digitally.",
+    tags: ["MERN Stack", "JWT, Bcrypt", "Axios", "Vite"],
+    githubUrl: "https://github.com/anandksri/Ausadhi",
   },
   {
     title: "Spotify Clone",
@@ -127,9 +127,9 @@ export const GALLERY_IMAGES = [
     description: "Passed SEE on 2080 with 3.53 GPA",
   },
   {
-    url: "/images/1stsem.jpeg",
-    title: "Diploma 1st Semester result",
-    description: "Diploma in computer science at KIT college result of first semster "
+    url: "/images/12Res.jpeg",
+    title: "Grade 12 Result",
+    description: "Passed +2 with Science on 2083 with 3.4 GPA",
   },
   {
     url: "/images/java.jpeg",
@@ -142,9 +142,9 @@ export const GALLERY_IMAGES = [
     description: "Python basics certificate from sololearn.",
   },
   {
-    url: "/images/card.jpeg",
+    url: "/images/hackthon.jpeg",
     title: "Hackathon participate",
-    description: "First Exprience of hackathon at pcps college",
+    description: "Participated in Hackathon organized by ICT at COSMOS College.",
   },
   {
     url: "/images/sigma.jpeg",
