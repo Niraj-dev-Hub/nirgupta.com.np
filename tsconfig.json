@@ -23,7 +23,8 @@
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "strict": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "ignoreDeprecations": "6.0"
   },
   "include": ["src", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

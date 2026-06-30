@@ -126,11 +126,11 @@ export const GALLERY_IMAGES = [
     title: "Grade 10 Grade Sheets",
     description: "Passed SEE on 2080 with 3.53 GPA",
   },
-  {
-    url: "/images/12Res.jpeg",
-    title: "Grade 12 Result",
-    description: "Passed +2 with Science on 2083 with 3.4 GPA",
-  },
+  // {
+  //   url: "/images/12Res.jpeg",
+  //   title: "Grade 12 Result",
+  //   description: "Passed +2 with Science on 2083 with 3.4 GPA",
+  // },
   {
     url: "/images/java.jpeg",
     title: "JAVA basics",
@@ -141,11 +141,11 @@ export const GALLERY_IMAGES = [
     title: "Python Basics",
     description: "Python basics certificate from sololearn.",
   },
-  {
-    url: "/images/hackthon.jpeg",
-    title: "Hackathon participate",
-    description: "Participated in Hackathon organized by ICT at COSMOS College.",
-  },
+  // {
+  //   url: "/images/hackthon.jpeg",
+  //   title: "Hackathon participate",
+  //   description: "Participated in Hackathon organized by ICT at COSMOS College.",
+  // },
   {
     url: "/images/sigma.jpeg",
     title: "FullStack Devlopment",
