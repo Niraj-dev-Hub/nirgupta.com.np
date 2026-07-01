@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Terminal, ArrowRight, FileText, MapPin, Code, Shield } from "lucide-react";
 import { PERSONAL_DETAILS, TYPING_WORDS } from "../data";
 
-const profileAvatar = "/images/pp.jpeg";
+const profileAvatar = "/images/newPP.jpg";
 
 export default function Hero() {
   const [text, setText] = useState("");
