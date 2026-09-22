@@ -23,18 +23,17 @@ export default function Projects() {
         {/* Featured Projects Responsive Grid layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {PROJECTS.map((project, idx) => {
-            // Give the active 'EcoTrack-Nepal' project a featured neon border highlight
-            const isLatestEcoTrack = project.title.toLowerCase().includes("ecotrack");
-            
+            const isFeaturedProject = Boolean(project.featured);
+
             return (
               <Reveal 
                 key={project.title} 
                 delay={idx * 100}
-                className={isLatestEcoTrack ? "md:col-span-2 lg:col-span-3 lg:mb-4" : ""}
+                className={isFeaturedProject ? "md:col-span-2 lg:col-span-3 lg:mb-4" : ""}
               >
                 <div 
                   className={`glass-card p-6 sm:p-8 rounded-xl h-full flex flex-col justify-between transition-all duration-300 relative overflow-hidden group ${
-                    isLatestEcoTrack 
+                    isFeaturedProject
                       ? "border border-cyan-500/30 bg-cyan-500/[0.02] box-glow-blue" 
                       : ""
                   }`}
@@ -51,7 +50,7 @@ export default function Projects() {
                           Project_0{idx + 1}
                         </span>
                       </div>
-                      {isLatestEcoTrack && (
+                      {isFeaturedProject && (
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 tracking-wide">
                           <Sparkles className="w-3.5 h-3.5 animate-bounce" />
                           Featured Active Prototyping
@@ -61,14 +60,14 @@ export default function Projects() {
 
                     {/* Title */}
                     <h3 className={`font-heading text-xl sm:text-2xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors ${
-                      isLatestEcoTrack ? "lg:text-3xl" : ""
+                      isFeaturedProject ? "lg:text-3xl" : ""
                     }`}>
                       {project.title}
                     </h3>
 
                     {/* Description */}
                     <p className={`text-gray-400 text-sm sm:text-base leading-relaxed mb-6 ${
-                      isLatestEcoTrack ? "lg:max-w-4xl" : ""
+                      isFeaturedProject ? "lg:max-w-4xl" : ""
                     }`}>
                       {project.description}
                     </p>

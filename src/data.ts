@@ -3,6 +3,7 @@ export interface Project {
   description: string;
   tags: string[];
   githubUrl: string;
+  featured?: boolean;
 }
 
 export interface SkillGroup {
@@ -21,21 +22,22 @@ export interface Achievement {
 export const PERSONAL_DETAILS = {
   fullName: "Niraj Kumar Gupta",
   shortName: "NirGupta",
-  domain: "nirgupta.com.np",
+  domain: "nirajkgupta.com.np",
   role: "Computer Engineering Student | Aspiring Software Engineer",
   location: "Nepal",
   quote: "Consistency beats talent when talent doesn’t stay consistent.",
   github: "https://github.com/Niraj-dev-Hub",
   linkedin: "https://www.linkedin.com/in/niraj-gupta-670095292/",
   facebook: "https://www.facebook.com/Nirgupta123",
-  currentlyBuildingUrl: "https://github.com/Niraj-dev-Hub/EcoTrack-Nepal",
-  currentlyBuildingName: "EcoTrack-Nepal",
+  currentlyBuildingUrl: "https://zerodha-frontd.vercel.app",
+  currentlyBuildingName: "ZERODHA Clone",
 };
 
 export const TYPING_WORDS = [
   "DSA with Java",
   "Full Stack Web",
-  "Cybersecurity Enthusiast"
+  "MERN Stack Developer",
+  "Software Engineer"
 ];
 
 export const SKILL_GROUPS: SkillGroup[] = [
@@ -67,12 +69,21 @@ export const SKILL_GROUPS: SkillGroup[] = [
 ];
 
 export const PROJECTS: Project[] = [
+   {
+    title: "Zerodha Clone",
+    description: "A structural clone of the Zerodha trading platform, showcasing responsive listings, custom dashboards, and advanced filters.",
+    tags: ["React", "MERN Stack", "Bootstrap"],
+    githubUrl: "https://zerodha-frontd.vercel.app/",
+    featured: true,
+  },
   {
     title: "EcoTrack-Nepal",
     description: "An environmental tracking initiative for Nepal, assisting users in tracking carbon footprints, eco-friendly pathways, or local environment stats. Currently actively developed.",
     tags: ["React", "Tailwind CSS", "Climate Tech"],
     githubUrl: "https://github.com/Niraj-dev-Hub/EcoTrack-Nepal",
+    featured: false,
   },
+ 
   {
     title: "Nir-game-Hub",
     description: "An interactive hub compiling lightweight browser-based arcade, puzzle, and custom interactive games developed in JavaScript.",
@@ -132,9 +143,9 @@ export const GALLERY_IMAGES = [
     description: "Passed +2 with Science on 2083 with 3.4 GPA",
   },
   {
-    url: "/images/java.jpeg",
-    title: "JAVA basics",
-    description: "Java basics certificate from sololearn.",
+    url: "/images/JavaIntermidate.jpeg",
+    title: "JAVA Intermediate",
+    description: "Java Intermediate certificate from sololearn.",
   },
   {
     url: "/images/python.jpeg",
@@ -142,9 +153,9 @@ export const GALLERY_IMAGES = [
     description: "Python basics certificate from sololearn.",
   },
   {
-    url: "/images/hackthon.jpeg",
-    title: "Hackathon participate",
-    description: "Participated in Hackathon organized by ICT at COSMOS College.",
+    url: "/images/IntroductionSql.jpeg",
+    title: "SQL Introduction",
+    description: "Introduction to SQL certificate from sololearn.",
   },
   {
     url: "/images/sigma.jpeg",
