@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
-import { Terminal, ArrowRight, FileText, MapPin, Code, Shield } from "lucide-react";
 import { PERSONAL_DETAILS, TYPING_WORDS } from "../data";
 
 const profileAvatar = "/images/newPP.jpg";
 
-export default function Hero() {
+interface HeroProps {
+  theme: "dark" | "light";
+}
+
+export default function Hero({ theme }: HeroProps) {
   const [text, setText] = useState("");
   const [wordIdx, setWordIdx] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingSpeed, setTypingSpeed] = useState(150);
+  const isLight = theme === "light";
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -16,15 +20,12 @@ export default function Hero() {
 
     const handleTyping = () => {
       if (!isDeleting) {
-        // Typing letters
         setText(currentWord.substring(0, text.length + 1));
         if (text === currentWord) {
-          // Finished typing, pause
           timer = setTimeout(() => setIsDeleting(true), 1500);
           return;
         }
       } else {
-        // Deleting letters
         setText(currentWord.substring(0, text.length - 1));
         if (text === "") {
           setIsDeleting(false);
@@ -54,158 +55,79 @@ export default function Hero() {
     }
   };
 
-  const handleDownloadResume = () => {
-    window.open("/Resume.pdf", "_blank");
-  };
-
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center pt-28 pb-20 overflow-hidden w-full"
+      className={`relative min-h-screen flex flex-col items-center justify-center pt-24 pb-20 overflow-hidden w-full ${
+        isLight ? "bg-[#f3f3f3] text-zinc-900" : "bg-[#111111] text-white"
+      }`}
     >
-      {/* Decorative Cyber Blur Backgrounds */}
-      <div className="absolute top-1/4 left-[10%] w-80 h-80 bg-cyan-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-[10%] w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
-      
-      {/* Subtle Grid Accent */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-
-      <div className="section-container relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-        
-        {/* Left Column: Introductions, Text, Secondary Terminal */}
-        <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
-          
-          {/* Hardware Status Tag */}
-          <div className="inline-flex items-center gap-2 bg-slate-950/60 border border-white/10 px-4 py-1.5 rounded-full text-xs sm:text-sm font-mono text-gray-300 tracking-wider backdrop-blur-md">
-            <MapPin className="w-4 h-4 text-cyan-400 animate-pulse" />
-            <span>{PERSONAL_DETAILS.location}</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-ping" />
-            <span className="text-gray-400">Available for Opportunities</span>
-          </div>
-
-          {/* Introduction Prompt */}
-          <p className="font-mono text-cyan-400 text-sm sm:text-base font-bold tracking-widest uppercase">
-            Hello World, I am
-          </p>
-
-          {/* Fully scalable fluid typography */}
-          <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-none">
-            {PERSONAL_DETAILS.fullName}
-          </h1>
-
-          {/* Custom animated typing cursor line */}
-          <div className="min-h-[40px] sm:min-h-[50px]">
-            <h2 className="font-mono text-xl sm:text-3xl text-gray-300 font-medium tracking-tight">
-              I specialize in{" "}
-              <span className="text-cyan-400 text-glow-blue border-r-2 border-cyan-400 pr-1 animate-pulse">
-                {text}
-              </span>
-            </h2>
-          </div>
-
-          {/* Brief presentation summary */}
-          <p className="text-base sm:text-lg text-gray-400 max-w-2xl leading-relaxed">
-            {PERSONAL_DETAILS.role}. Focused on building high-performance decentralized web applications, mastering competitive software architectures, and hardening network boundaries.
-          </p>
-
-          {/* CTA Action Block */}
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start w-full max-w-md pt-4">
-            <button
-              id="hero-cta-work"
-              type="button"
-              onClick={() => scrollToSection("projects")}
-              className="w-full sm:w-auto px-8 py-3.5 bg-cyan-500 hover:bg-cyan-600 text-gray-950 font-extrabold text-base rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
+      <div className="relative z-10 flex flex-col items-center text-center px-4 w-full">
+        <div className="relative mb-6 sm:mb-8">
+          <div
+            className={`w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-90 lg:h-90 rounded-full p-[10px] sm:p-[8px] ${
+              isLight ? "bg-zinc-300/80" : "bg-[#2a2a2a]"
+            }`}
+          >
+            <div
+              className={`w-full h-full rounded-full overflow-hidden border ${
+                isLight ? "border-black/10" : "border-white/13"
+              }`}
             >
-              Explore Work
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
-
-            <a
-              id="hero-cta-resume"
-              href="/Resume.pdf"
-              download
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-3.5 bg-white/5 hover:bg-white/10 text-gray-200 hover:text-white font-semibold text-base rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 flex items-center justify-center gap-2"
-            >
-              <FileText className="w-4 h-4 text-cyan-400" />
-              Resume (PDF)
-            </a>
-          </div>
-
-          {/* Interactive Compact Terminal Display */}
-          <div className="w-full max-w-xl pr-2 pt-6">
-            <div className="glass-card rounded-xl p-4 text-left border border-white/10 shadow-2xl">
-              <div className="flex items-center gap-2 border-b border-white/10 pb-3 mb-3">
-                <span className="w-3.5 h-3.5 rounded-full bg-red-500/70" />
-                <span className="w-3.5 h-3.5 rounded-full bg-yellow-500/70" />
-                <span className="w-3.5 h-3.5 rounded-full bg-cyan-500/70" />
-                <span className="font-mono text-xs text-gray-500 ml-2">bash ~ nirgupta.sh</span>
-              </div>
-              <div className="font-mono text-xs sm:text-sm text-gray-300 space-y-1.5 leading-relaxed">
-                <p className="text-gray-500"># System Hardware Profile</p>
-                <p>
-                  <span className="text-cyan-400">$</span> fetch-profile --user nirajgupta
-                </p>
-                <p className="text-emerald-400">
-                  ▸ Node: <span className="text-white">Active</span> | Active Domain:{" "}
-                  <span className="text-white">{PERSONAL_DETAILS.domain}</span>
-                </p>
-                <p className="text-emerald-400">
-                  ▸ Engineering Focus: <span className="text-white">Full Stack Sprints / DSA with JAVA </span>
-                </p>
-                <p className="text-emerald-400">
-                  ▸ Live Build: <span className="text-white">{PERSONAL_DETAILS.currentlyBuildingName}</span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column: High Quality Stylized Profile Photo with Tech Accents */}
-        <div className="lg:col-span-5 flex justify-center items-center relative">
-          <div className="relative w-72 h-72 sm:w-96 sm:h-96 flex items-center justify-center">
-            
-            {/* Glowing Cyber Pulser Ring */}
-            <div className="absolute inset-0 rounded-full border-2 border-dashed border-cyan-500/30 animate-[spin_40s_linear_infinite]" />
-            <div className="absolute -inset-4 rounded-full border border-blue-500/10 animate-[spin_20s_linear_infinite]" />
-            <div className="absolute inset-4 rounded-full border-2 border-cyan-400/40 cyber-pulse-active" />
-
-            {/* Orbiting micro tech tags */}
-            <div className="absolute top-[10%] left-[10%] bg-slate-900/90 border border-cyan-500/30 text-cyan-400 text-[10px] font-mono px-2 py-1 rounded shadow-md z-10 flex items-center gap-1">
-              <Code className="w-3 h-3" />
-              <span>DEV</span>
-            </div>
-            <div className="absolute bottom-[10%] right-[10%] bg-slate-900/90 border border-blue-500/30 text-blue-400 text-[10px] font-mono px-2 py-1 rounded shadow-md z-10 flex items-center gap-1">
-              <Shield className="w-3 h-3" />
-              <span>SEC</span>
-            </div>
-
-            {/* Main Mirror Glass Frame */}
-            <div className="w-[88%] h-[88%] rounded-full overflow-hidden border-4 border-slate-900 shadow-2xl relative group bg-slate-900">
-              
-              {/* Profile Image Asset with no-referrer policy */}
               <img
                 src={profileAvatar}
                 alt="Niraj Kumar Gupta Profile Picture"
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                className="w-full h-full object-cover"
               />
-
-              {/* Cyan Digital Grid scanoverlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-cyan-950/40 via-transparent to-transparent opacity-40 group-hover:opacity-60 transition-opacity" />
-              <div className="absolute inset-0 bg-[radial-gradient(#06b6d405_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none" />
             </div>
-
-            {/* Tech Corner brackets */}
-            <span className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-cyan-400/60" />
-            <span className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-cyan-400/60" />
-            <span className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-cyan-400/60" />
-            <span className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-cyan-400/60" />
           </div>
         </div>
 
+        <h1
+          className={`font-heading text-[1.75rem] sm:text-4xl md:text-5xl lg:text-[3.6rem] font-semibold tracking-tight leading-[1.08] max-w-4xl ${
+            isLight ? "text-zinc-900" : "text-white"
+          }`}
+        >
+         <span className="text-[#4B8FEA]">Niraj Gupta <br/></span>
+        
+         
+        </h1>
+
+        <div className="mt-5 min-h-[2rem] sm:min-h-[2.5rem]">
+          <p
+            className={`text-lg sm:text-2xl font-medium ${
+              isLight ? "text-zinc-600" : "text-zinc-300"
+            }`}
+          >
+            I specialize in{" "}
+            <span className="text-[#4B8FEA] caret-blink pr-0.5">
+              {text}
+            </span>
+          </p>
+        </div>
+
+        <p
+          className={`mt-3 text-base sm:text-xl md:text-2xl font-normal max-w-3xl leading-relaxed ${
+            isLight ? "text-zinc-500" : "text-[#b3b3b3]"
+          }`}
+        >
+         {PERSONAL_DETAILS.role}.
+        </p>
       </div>
+
+      <button
+        type="button"
+        onClick={() => scrollToSection("about")}
+        aria-label="Scroll to content"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[#4B8FEA] hover:opacity-80 transition-opacity"
+      >
+        <svg viewBox="0 0 40 40" className="w-8 h-8 animate-bounce" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 4.5h36l-3.24 5.61H5.24L2 4.5Z" fill="currentColor" />
+          <path d="M9.38 17.28h21.24l-3.24 5.61H12.62l-3.24-5.61Z" fill="currentColor" />
+          <path d="M16.76 30.07h6.48L20 35.68l-3.24-5.61Z" fill="currentColor" />
+        </svg>
+      </button>
     </section>
   );
 }

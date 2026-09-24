@@ -1,18 +1,24 @@
-import { Award, Calendar, Bookmark, GraduationCap, ChevronRight } from "lucide-react";
+import { Calendar, GraduationCap } from "lucide-react";
 import { ACHIEVEMENTS } from "../data";
 import Reveal from "./Reveal";
 
-export default function Achievements() {
+interface AchievementsProps {
+  theme: "dark" | "light";
+}
+
+export default function Achievements({ theme }: AchievementsProps) {
+  const isLight = theme === "light";
+
   return (
-    <section id="achievements" className="w-full py-20 bg-gray-950/40 relative">
+    <section id="achievements" className={`w-full py-20 relative ${isLight ? "bg-[#f3f3f3] text-zinc-900" : "bg-[#111111] text-white"}`}>
       <div className="section-container">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="font-heading text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          <h2 className={`font-heading text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 ${isLight ? "text-zinc-900" : "text-white"}`}>
             Path & <span className="text-cyan-400">Achievements</span>
           </h2>
           <div className="w-16 h-1 bg-cyan-500 mx-auto rounded-full" />
-          <p className="mt-4 text-xs sm:text-sm font-mono text-gray-400 tracking-widest uppercase">
+          <p className={`mt-4 text-xs sm:text-sm font-mono tracking-widest uppercase ${isLight ? "text-zinc-500" : "text-gray-400"}`}>
             Education, Community Engagement, and Milestones
           </p>
         </div>
@@ -28,7 +34,7 @@ export default function Achievements() {
                 </span>
 
                 {/* Event Card Content */}
-                <div className="glass-card p-6 sm:p-8 rounded-xl border border-white/5 hover:border-cyan-500/25 transition-all">
+                <div className={`p-6 sm:p-8 rounded-xl border transition-all ${isLight ? "glass-card border-zinc-200/80" : "glass-card border-white/5 hover:border-cyan-500/25"}`}>
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
                     {/* Organization Banner */}
                     <div className="flex items-center gap-2">
@@ -39,19 +45,19 @@ export default function Achievements() {
                     </div>
 
                     {/* Date/Period */}
-                    <div className="flex items-center gap-1.5 text-gray-500 font-mono text-xs">
+                    <div className={`flex items-center gap-1.5 font-mono text-xs ${isLight ? "text-zinc-500" : "text-gray-500"}`}>
                       <Calendar className="w-3.5 h-3.5 text-cyan-400/60" />
                       <span>{item.date}</span>
                     </div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-heading text-lg sm:text-xl font-bold text-white mb-3">
+                  <h3 className={`font-heading text-lg sm:text-xl font-bold mb-3 ${isLight ? "text-zinc-900" : "text-white"}`}>
                     {item.title}
                   </h3>
 
                   {/* Description text */}
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className={`text-sm leading-relaxed ${isLight ? "text-zinc-700" : "text-gray-400"}`}>
                     {item.description}
                   </p>
 
@@ -61,7 +67,7 @@ export default function Achievements() {
                       <span className="px-2.5 py-1 text-[10px] font-mono font-bold rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 uppercase tracking-widest">
                         Collaboration
                       </span>
-                      <span className="px-2.5 py-1 text-[10px] font-mono font-bold rounded bg-white/5 text-gray-400 uppercase tracking-widest">
+                      <span className="px-2.5 py-1 text-[10px] font-mono font-bold rounded bg-[#1e1e1e] text-[#dfeffc] border border-[#333333] uppercase tracking-widest">
                         Agile
                       </span>
                     </div>
@@ -72,7 +78,7 @@ export default function Achievements() {
                       <span className="px-2.5 py-1 text-[10px] font-mono font-bold rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 uppercase tracking-widest">
                         Kali Linux
                       </span>
-                      <span className="px-2.5 py-1 text-[10px] font-mono font-bold rounded bg-white/5 text-gray-400 uppercase tracking-widest">
+                      <span className="px-2.5 py-1 text-[10px] font-mono font-bold rounded bg-[#1e1e1e] text-[#dfeffc] border border-[#333333] uppercase tracking-widest">
                         SecOps
                       </span>
                     </div>
@@ -83,7 +89,7 @@ export default function Achievements() {
                       <span className="px-2.5 py-1 text-[10px] font-mono font-bold rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 uppercase tracking-widest">
                         Competitive Coding
                       </span>
-                      <span className="px-2.5 py-1 text-[10px] font-mono font-bold rounded bg-white/5 text-gray-400 uppercase tracking-widest">
+                      <span className="px-2.5 py-1 text-[10px] font-mono font-bold rounded bg-[#1e1e1e] text-[#dfeffc] border border-[#333333] uppercase tracking-widest">
                         Java Algorithmic
                       </span>
                     </div>

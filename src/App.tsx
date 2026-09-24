@@ -11,6 +11,17 @@ import Footer from "./components/Footer";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("hero");
+  const [theme, setTheme] = useState<"dark" | "light">(() => {
+    if (typeof window === "undefined") return "dark";
+    const stored = window.localStorage.getItem("theme");
+    return stored === "light" ? "light" : "dark";
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    document.body.style.background = theme === "light" ? "#f3f3f3" : "#060b19";
+    window.localStorage.setItem("theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     const sectionIds = ["hero", "about", "tech-stack", "projects", "gallery", "achievements", "contact"];
@@ -41,36 +52,42 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen text-gray-100 selection:bg-cyan-500/30 selection:text-cyan-400 bg-[#060b19] overflow-x-hidden">
+    <div className={`relative min-h-screen selection:bg-cyan-500/30 selection:text-cyan-400 overflow-x-hidden ${
+      theme === "light" ? "text-zinc-900 bg-[#f3f3f3]" : "text-gray-100 bg-[#060b19]"
+    }`}>
       {/* Dynamic Sticky Header Navigation */}
-      <Navbar activeSection={activeSection} />
+      <Navbar
+        activeSection={activeSection}
+        theme={theme}
+        onToggleTheme={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))}
+      />
 
       {/* Main Column Stack Row-by-Row */}
       <main className="w-full flex flex-col">
         {/* Section 1: Hero */}
-        <Hero />
+        <Hero theme={theme} />
         
         {/* Section 2: About + Philosophy */}
-        <About />
+        <About theme={theme} />
         
         {/* Section 3: Tech Stack */}
-        <TechStack />
+        <TechStack theme={theme} />
         
         {/* Section 4: Featured Projects */}
-        <Projects />
+        <Projects theme={theme} />
         
         {/* Section 5: Gallery ("My Creative Space") */}
-        <Gallery />
+        <Gallery theme={theme} />
         
         {/* Section 6: Achievements */}
-        <Achievements />
+        <Achievements theme={theme} />
         
         {/* Section 7: Contact */}
-        <Contact />
+        <Contact theme={theme} />
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer theme={theme} />
     </div>
   );
 }

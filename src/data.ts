@@ -23,7 +23,7 @@ export const PERSONAL_DETAILS = {
   fullName: "Niraj Kumar Gupta",
   shortName: "NirGupta",
   domain: "nirajkgupta.com.np",
-  role: "Computer Engineering Student | Aspiring Software Engineer",
+  role: "Computer Engineering Student | MERN Stack Developer | Aspiring Software Engineer",
   location: "Nepal",
   quote: "Consistency beats talent when talent doesn’t stay consistent.",
   github: "https://github.com/Niraj-dev-Hub",

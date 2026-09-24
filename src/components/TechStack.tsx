@@ -2,7 +2,12 @@ import { Code, Layout, Database, Wrench, Terminal, Cpu } from "lucide-react";
 import { SKILL_GROUPS } from "../data";
 import Reveal from "./Reveal";
 
-export default function TechStack() {
+interface TechStackProps {
+  theme: "dark" | "light";
+}
+
+export default function TechStack({ theme }: TechStackProps) {
+  const isLight = theme === "light";
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case "code":
@@ -21,15 +26,15 @@ export default function TechStack() {
   };
 
   return (
-    <section id="tech-stack" className="w-full py-20 bg-gray-950 relative">
+    <section id="tech-stack" className={`w-full py-20 relative ${isLight ? "bg-[#f3f3f3] text-zinc-900" : "bg-[#111111] text-white"}`}>
       <div className="section-container">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="font-heading text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          <h2 className={`font-heading text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 ${isLight ? "text-zinc-900" : "text-white"}`}>
             Tech <span className="text-cyan-400">Stack</span>
           </h2>
           <div className="w-16 h-1 bg-cyan-500 mx-auto rounded-full" />
-          <p className="mt-4 text-xs sm:text-sm font-mono text-gray-400 tracking-widest uppercase">
+          <p className={`mt-4 text-xs sm:text-sm font-mono tracking-widest uppercase ${isLight ? "text-zinc-500" : "text-gray-400"}`}>
             Languages, Libraries, Systems, & Tools
           </p>
         </div>
@@ -44,7 +49,7 @@ export default function TechStack() {
                     <div className="p-3 bg-cyan-500/10 rounded-lg flex items-center justify-center border border-cyan-500/20">
                       {getIcon(group.icon)}
                     </div>
-                    <h3 className="font-heading text-lg sm:text-xl font-bold text-white tracking-wide">
+                    <h3 className={`font-heading text-lg sm:text-xl font-bold tracking-wide ${isLight ? "text-zinc-900" : "text-white"}`}>
                       {group.category}
                     </h3>
                   </div>
@@ -56,7 +61,7 @@ export default function TechStack() {
                     {group.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-lg bg-white/5 border border-white/10 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all text-gray-300"
+                        className={`px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-lg border transition-all ${isLight ? "bg-[#1e1e1e] text-zinc-200 border-[#333333] hover:border-[#4a4a4a] hover:bg-[#2a2a2a]" : "bg-[#1e1e1e] border-[#333333] hover:border-[#4a4a4a] hover:bg-[#2a2a2a] text-[#dfeffc]"}`}
                       >
                         {skill}
                       </span>
@@ -65,7 +70,7 @@ export default function TechStack() {
                 </div>
 
                 {/* Subtle technology metadata line */}
-                <span className="font-mono text-[10px] text-gray-600 mt-8 tracking-wider block text-right">
+                <span className={`font-mono text-[10px] mt-8 tracking-wider block text-right ${isLight ? "text-zinc-500" : "text-gray-600"}`}>
                   GRP_0{idx + 1} // SYS_STK
                 </span>
               </div>

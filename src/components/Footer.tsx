@@ -1,7 +1,12 @@
 import { ArrowUp, Terminal } from "lucide-react";
 import { PERSONAL_DETAILS } from "../data";
 
-export default function Footer() {
+interface FooterProps {
+  theme: "dark" | "light";
+}
+
+export default function Footer({ theme }: FooterProps) {
+  const isLight = theme === "light";
   const currentYear = new Date().getFullYear();
 
   const handleArrowClick = () => {
@@ -35,7 +40,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer id="footer-container" className="w-full bg-gray-950 border-t border-white/5 py-12 relative overflow-hidden">
+    <footer id="footer-container" className={`w-full py-12 relative overflow-hidden border-t ${isLight ? "bg-[#f3f3f3] border-zinc-200" : "bg-gray-950 border-white/5"}`}>
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           
@@ -43,13 +48,13 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start gap-2">
             <div className="flex items-center gap-2 font-heading text-lg font-bold tracking-wider">
               <Terminal className="w-4 h-4 text-cyan-400" />
-              <span className="text-white">
+              <span className={isLight ? "text-zinc-900" : "text-white"}>
                 Nir<span className="text-cyan-400 font-mono">_Gupta</span>
               </span>
             </div>
             <a 
               href={`https://${PERSONAL_DETAILS.domain}`}
-              className="text-xs sm:text-sm font-mono text-gray-500 hover:text-cyan-400 transition-colors"
+              className={`text-xs sm:text-sm font-mono hover:text-cyan-400 transition-colors ${isLight ? "text-zinc-500" : "text-gray-500"}`}
             >
               {PERSONAL_DETAILS.domain}
             </a>
@@ -61,7 +66,7 @@ export default function Footer() {
               <button
                 key={item.id}
                 onClick={() => handleLinkClick(item.id)}
-                className="text-xs sm:text-sm text-gray-400 hover:text-cyan-400 font-medium transition-colors cursor-pointer font-sans"
+                className={`text-xs sm:text-sm hover:text-cyan-400 font-medium transition-colors cursor-pointer font-sans ${isLight ? "text-zinc-600" : "text-gray-400"}`}
               >
                 {item.label}
               </button>
@@ -71,10 +76,10 @@ export default function Footer() {
           {/* Built with label & scroll back to top */}
           <div className="flex items-center gap-6">
             <div className="text-center md:text-right space-y-1">
-              <p className="text-gray-400 text-sm">
-                Built with <span className="text-cyan-400 animate-pulse">💻</span> by <strong className="text-white">{PERSONAL_DETAILS.shortName}</strong>
+              <p className={`text-sm ${isLight ? "text-zinc-700" : "text-gray-400"}`}>
+                Built with <span className="text-cyan-400 animate-pulse">💻</span> by <strong className={isLight ? "text-zinc-900" : "text-white"}>{PERSONAL_DETAILS.shortName}</strong>
               </p>
-              <p className="text-gray-600 text-xs font-mono">
+              <p className={`text-xs font-mono ${isLight ? "text-zinc-500" : "text-gray-600"}`}>
                 © {currentYear} Niraj Kumar Gupta.
               </p>
             </div>
@@ -83,7 +88,7 @@ export default function Footer() {
             <button
               id="footer-back-to-top"
               onClick={handleArrowClick}
-              className="p-3 bg-white/5 hover:bg-cyan-500 border border-white/10 hover:border-cyan-500 text-gray-400 hover:text-gray-950 rounded-xl transition-all active:scale-95 group cursor-pointer"
+              className={`p-3 border rounded-xl transition-all active:scale-95 group cursor-pointer ${isLight ? "bg-white border-zinc-200 text-zinc-600 hover:border-cyan-500 hover:text-gray-950" : "dark-button hover:bg-cyan-500 hover:text-gray-950"}`}
               aria-label="Back to Top"
             >
               <ArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />

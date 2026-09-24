@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
-import { Image, Maximize2, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Maximize2, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { GALLERY_IMAGES } from "../data";
 import Reveal from "./Reveal";
 
-export default function Gallery() {
+interface GalleryProps {
+  theme: "dark" | "light";
+}
+
+export default function Gallery({ theme }: GalleryProps) {
+  const isLight = theme === "light";
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
 
   useEffect(() => {
@@ -34,15 +39,15 @@ export default function Gallery() {
   }, [activeIdx]);
 
   return (
-    <section id="gallery" className="w-full py-20 bg-gray-950 relative">
+    <section id="gallery" className={`w-full py-20 relative ${isLight ? "bg-[#f3f3f3] text-zinc-900" : "bg-[#111111] text-white"}`}>
       <div className="section-container">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="font-heading text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          <h2 className={`font-heading text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 ${isLight ? "text-zinc-900" : "text-white"}`}>
             My Creative <span className="text-cyan-400">Space</span>
           </h2>
           <div className="w-16 h-1 bg-cyan-500 mx-auto rounded-full" />
-          <p className="mt-4 text-xs sm:text-sm font-mono text-gray-400 tracking-widest uppercase">
+          <p className={`mt-4 text-xs sm:text-sm font-mono tracking-widest uppercase ${isLight ? "text-zinc-500" : "text-gray-400"}`}>
             Captured Aspirations & Core Academic Journeys
           </p>
         </div>
@@ -54,7 +59,11 @@ export default function Gallery() {
               <div
                 id={`gallery-item-${idx}`}
                 onClick={() => setActiveIdx(idx)}
-                className="group relative glass-card rounded-xl overflow-hidden shadow-2xl border border-white/5 hover:border-cyan-500/30 transition-all duration-300 flex flex-col cursor-pointer"
+                className={`group relative rounded-xl overflow-hidden transition-all duration-300 flex flex-col cursor-pointer ${
+                  isLight
+                    ? "glass-card bg-white border border-zinc-200 shadow-[0_12px_30px_rgba(15,23,42,0.07)] hover:border-cyan-400/40"
+                    : "glass-card border border-white/5 shadow-2xl hover:border-cyan-500/30"
+                }`}
               >
                 {/* Image Wrap */}
                 <div className="relative overflow-hidden aspect-[3/2] w-full bg-gray-900 flex items-center justify-center">
@@ -76,18 +85,22 @@ export default function Gallery() {
                 </div>
 
                 {/* Constant Subtle Caption Block */}
-                <div className="p-5 flex-1 flex flex-col justify-between bg-gray-900/40">
+                <div className={`p-5 flex-1 flex flex-col justify-between ${
+                  isLight
+                    ? "bg-white border-t border-zinc-200"
+                    : "bg-[#1e1e1e] border-t border-[#333333]"
+                }`}>
                   <div>
-                    <h3 className="font-heading text-base sm:text-lg font-bold text-white group-hover:text-cyan-400 transition-colors mb-2">
+                    <h3 className={`font-heading text-base sm:text-lg font-bold group-hover:text-cyan-400 transition-colors mb-2 ${isLight ? "text-zinc-900" : "text-white"}`}>
                       {img.title}
                     </h3>
-                    <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                    <p className={`text-xs sm:text-sm leading-relaxed ${isLight ? "text-zinc-700" : "text-gray-400"}`}>
                       {img.description}
                     </p>
                   </div>
 
                   {/* Gallery Index Stamp */}
-                  <span className="font-mono text-[10px] text-gray-500 mt-4 tracking-wider uppercase block text-right">
+                  <span className={`font-mono text-[10px] mt-4 tracking-wider uppercase block text-right ${isLight ? "text-zinc-500" : "text-gray-500"}`}>
                     IMG_REF_0{idx + 1}
                   </span>
                 </div>
@@ -106,7 +119,7 @@ export default function Gallery() {
           {/* Close button */}
           <button
             onClick={() => setActiveIdx(null)}
-            className="absolute top-6 right-6 p-3 bg-white/5 hover:bg-white/10 hover:text-cyan-400 rounded-full border border-white/10 text-white transition-all transform hover:scale-105 active:scale-95 cursor-pointer z-[60]"
+            className="absolute top-6 right-6 p-3 bg-[#1e1e1e] hover:bg-[#2a2a2a] hover:text-cyan-400 rounded-full border border-[#333333] text-white transition-all transform hover:scale-105 active:scale-95 cursor-pointer z-[60]"
             aria-label="Close lightbox"
           >
             <X className="w-6 h-6" />
@@ -120,7 +133,7 @@ export default function Gallery() {
                 prev !== null ? (prev - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length : null
               );
             }}
-            className="absolute left-4 sm:left-8 p-3 bg-white/5 hover:bg-white/10 hover:text-cyan-400 rounded-full border border-white/10 text-white transition-all transform hover:scale-105 active:scale-95 cursor-pointer z-[60]"
+            className="absolute left-4 sm:left-8 p-3 bg-[#1e1e1e] hover:bg-[#2a2a2a] hover:text-cyan-400 rounded-full border border-[#333333] text-white transition-all transform hover:scale-105 active:scale-95 cursor-pointer z-[60]"
             aria-label="Previous image"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -134,7 +147,7 @@ export default function Gallery() {
                 prev !== null ? (prev + 1) % GALLERY_IMAGES.length : null
               );
             }}
-            className="absolute right-4 sm:right-8 p-3 bg-white/5 hover:bg-white/10 hover:text-cyan-400 rounded-full border border-white/10 text-white transition-all transform hover:scale-105 active:scale-95 cursor-pointer z-[60]"
+            className="absolute right-4 sm:right-8 p-3 bg-[#1e1e1e] hover:bg-[#2a2a2a] hover:text-cyan-400 rounded-full border border-[#333333] text-white transition-all transform hover:scale-105 active:scale-95 cursor-pointer z-[60]"
             aria-label="Next image"
           >
             <ChevronRight className="w-6 h-6" />
