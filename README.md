@@ -4,9 +4,9 @@ My personal portfolio website showcasing my skills, projects, and professional e
 
 ## 🚀 Live Demo
 
-[https://nirgupta.com.np](https://nirajkgupta.com.np)
+[https://nirajkgupta.com.np](https://nirajkgupta.com.np)
 
-<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/b72058e2-78de-48bc-b691-0a33e34bbc43" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/344701a6-fbd8-4ff6-8d61-5473aa38a6d6" />
 
 ## 🛠️ Tech Stack
 
@@ -35,7 +35,7 @@ My personal portfolio website showcasing my skills, projects, and professional e
 ## 🧑‍💻 Author
 
 **Nir Gupt**
-- GitHub: [@yourusername](https://github.com/Niraj-dev-Hub)
+- GitHub: [https://github.com/Niraj-dev-Hub](https://github.com/Niraj-dev-Hub)
 - Email: alexgupta609@gmail.com
 
 ## 📄 License
